@@ -1,0 +1,46 @@
+{
+  "skill_name": "oblique-figure-kit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm writing the architecture section of our README and I need one diagram: a client calls our API gateway, the gateway validates the license against a shared store, and then the request is served from PostgreSQL and Redis. I want it to look like a proper technical drawing — solid objects, shadows, numbered parts with captions underneath — not another boxes-and-lines flowchart. Please build the figure and export it as a PNG so I can drop it into the README.",
+      "expected_output": "An HTML sheet built with the oblique figure kit plus an exported 1500px PNG showing client → gateway/license check → shared store, with numbered label stacks, a heading and a legend.",
+      "files": [],
+      "expectations": [
+        "An HTML sheet file exists in the output directory and renders the figure",
+        "The sheet loads the bundled kit (lib.js and oblique.js) and drives it with Fig(...)",
+        "A PNG export exists and is 1500 pixels wide",
+        "The exported PNG is smaller than 300 KB (palette-optimised, light enough for the README)",
+        "The figure shows at least three distinct parts: the client, the gateway/license check and the shared store",
+        "Every part carries a numbered label stack with a title underneath it",
+        "The sheet has a section heading"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We ship the docs in English as well, so that same diagram has to exist in both languages. Can you make the figure bilingual — Chinese and English text in the same source — and export both versions as separate PNGs so the README can show the Chinese one with a link to the English one?",
+      "expected_output": "One bilingual HTML sheet using a t('中文','English') helper, exported to two different PNGs (zh and en) that show different wording.",
+      "files": [],
+      "expectations": [
+        "Two PNG exports exist and their bytes differ (the two languages really were rendered)",
+        "Both PNGs are 1500 pixels wide and smaller than 300 KB",
+        "The HTML routes its visible strings through a bilingual helper such as t('中文', 'English')",
+        "The English render contains English wording where the Chinese render contains Chinese wording",
+        "The Chinese and English renders have the same layout (the same parts in the same places)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The figure I attached (figures.html) has two obvious problems: the arrow between the client and the store floats in the middle instead of touching either part, and the two caption blocks underneath the parts are drawn on top of each other so the text is unreadable. Please fix both and re-export the PNG.",
+      "expected_output": "A corrected sheet whose arrow connects the two parts and whose two caption stacks no longer overlap, re-exported as a 1500px PNG.",
+      "files": ["evals/files/broken-sheet/figures.html", "evals/files/broken-sheet/fig.css", "evals/files/broken-sheet/lib.js", "evals/files/broken-sheet/oblique.js"],
+      "expectations": [
+        "A corrected sheet and an exported PNG exist in the output directory",
+        "The exported PNG is 1500 pixels wide and smaller than 300 KB",
+        "The arrow endpoints are derived from the part geometry (edgeAt/at) instead of hard-coded coordinates",
+        "The two caption stacks are drawn at different heights, so they cannot overlap",
+        "The exported PNG differs from the broken input"
+      ]
+    }
+  ]
+}

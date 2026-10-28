@@ -1,0 +1,24 @@
+body { margin: 0; background: #faf7ef; padding: 20px; }
+.sheet { width: 1500px; background: #faf7ef; margin-bottom: 30px; }
+svg { display: block; }
+.lb { font: 600 15.5px 'Noto Sans CJK SC', sans-serif; fill: #18181a; }
+.sb { font: 400 12.5px 'Noto Sans CJK SC', sans-serif; fill: #5c5c61; }
+.num { font: 500 10.5px 'Liberation Mono', monospace; fill: #9a9a9f; letter-spacing: .08em; }
+.chip { font: 500 10.5px 'Liberation Mono', 'Noto Sans CJK SC', monospace; fill: #46464b; }
+.face { font: 500 10.5px 'Liberation Mono', 'Noto Sans CJK SC', monospace; fill: #3a3a3e; }
+.faceb { font: 600 12px 'Noto Sans CJK SC', sans-serif; fill: #2b2b30; }
+.scr { font: 500 10.5px 'Liberation Mono', monospace; fill: #46464b; }
+.rej { font: 700 11.5px 'Liberation Mono', 'Noto Sans CJK SC', monospace; fill: #cf4449; }
+.note { font: 400 12.5px 'Noto Sans CJK SC', sans-serif; fill: #6e6e72; }
+.tag { font: 500 11.5px 'Liberation Mono', 'Noto Sans CJK SC', monospace; fill: #46464b; }
+.hd { font: 600 14px 'Noto Sans CJK SC', sans-serif; fill: #18181a; }
+.hds { font: 400 12.5px 'Noto Sans CJK SC', sans-serif; fill: #6e6e72; }
+.key { font: 400 12.5px 'Noto Sans CJK SC', sans-serif; fill: #57575a; }
+/* default ice palette (?pal=classic = old warm one): white paper, indigo-tinted ink */
+.ice body, .ice .sheet { background: #fff; }
+.ice .lb, .ice .hd { fill: #1f2d5c; }
+.ice .sb, .ice .note, .ice .hds, .ice .key { fill: #5f6b8a; }
+.ice .chip, .ice .tag, .ice .scr, .ice .face { fill: #3a4a7a; }
+.ice .faceb { fill: #1f2d5c; }
+.ice .num { fill: #8da4ef; }
+.ice .rej { fill: #e5484d; }

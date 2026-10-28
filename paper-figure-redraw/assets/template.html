@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Figures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b2130; --ink-2:#3a4152; --ink-3:#5b6275; --rule:#e3e6ee; --rule-2:#c6cddc;
+  --panel:#f6f7fa; --panel-2:#eef1f8;
+  --ind-50:#e9ebfb; --ind-100:#e4e7fa; --ind-200:#c9cdf3; --ind-300:#b9bef2; --ind-400:#8d92e3;
+  --ind-500:#7b80dd; --ind:#555ad0; --ind-700:#33379a; --ind-800:#2d3186; --ind-900:#1f2370; --ind-link:#3a3fae;
+  --sage-bg:#dcefe6; --sage:#5e9e85; --sage-ink:#173f30;
+  --sky:#4a8cc4; --sky-arc:#5b9bcf;
+  --pipe:#94a4d8; --pipe-head:#7e8fcc;
+}
+body{margin:0;background:#e7e5df;-webkit-font-smoothing:antialiased;color:var(--ink);font-family:'IBM Plex Sans',sans-serif}
+sub,sup{font-size:.7em;line-height:0}
+.canvas{display:flex;gap:90px;align-items:flex-start;padding:90px;width:max-content}
+.fig-wrap{display:flex;flex-direction:column;gap:14px}
+.fig-tag{display:flex;align-items:center;gap:10px}
+.fig-tag b{background:var(--ink);color:#fff;font-weight:600;font-size:13px;padding:3px 9px;border-radius:4px}
+.fig-tag span{font-size:15px;font-weight:500;color:var(--ink-2)}
+.sheet{box-sizing:border-box;background:#fff;padding:30px 30px 26px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 12px 40px -12px rgba(30,30,50,.18)}
+.math{font-family:'STIX Two Text',serif}
+.caption{margin:18px 0 0;font-family:'STIX Two Text',serif;font-size:15px;line-height:1.42;text-wrap:pretty}
+.sc{font-variant:small-caps}
+.box{background:#fff;border:1px solid var(--ink);border-radius:4px;padding:5px 12px}
+.group{background:var(--panel);border:1px solid var(--rule-2);border-radius:8px;padding:10px 14px 14px}
+.tok{display:inline-block;padding:0 5px;border-radius:5px;line-height:1.25}
+.tok.hi{background:var(--ind);border:1px solid var(--ind-700);box-shadow:0 1.5px 0 var(--ind-700);color:#fff}
+.tok.tgt{background:var(--sage-bg);border:1px solid var(--sage);box-shadow:0 1.5px 0 var(--sage);color:var(--sage-ink)}
+/* stacked sub/superscript, e.g. F^h_{i→S}: <span class="stk"><i>h</i><span><i>i</i>→<i>S</i></span></span> */
+.stk{display:inline-flex;flex-direction:column;vertical-align:.5em;font-size:.68em;line-height:1}
+svg text{font-family:'IBM Plex Sans',sans-serif}
+.ax{stroke:var(--ink);stroke-width:1}
+.grid{stroke:var(--rule);stroke-width:1;stroke-dasharray:3 3}
+.tick{font-size:9.5px;fill:var(--ink-3)}
+.axlabel{font-size:10px;font-weight:500;fill:var(--ink)}
+.val{font-size:11px;font-weight:600;fill:var(--ind-800)}
+</style>
+</head>
+<body>
+<section class="canvas">
+  <div class="fig-wrap">
+    <div class="fig-tag"><b>1</b><span>Figure 1 · Title (single column)</span></div>
+    <div class="sheet" style="width:760px">
+      <div id="fig1" style="position:relative;display:flex;flex-direction:column;gap:44px;align-items:flex-start">
+        <div class="group" data-a="a">
+          <div class="box math" data-a="eq">Proximity(<i>Z</i><sub><i>S</i></sub>, <i>Y</i><sub><i>S</i></sub>)</div>
+        </div>
+        <div class="group" data-a="b" style="margin-left:120px">Next stage — <span class="tok hi" data-a="t1">key</span> <span class="tok tgt">target</span></div>
+      </div>
+      <p class="caption"><i>Figure 1.</i> Caption in STIX Two Text. <b>Left:</b> … <b>Right:</b> …</p>
+    </div>
+  </div>
+</section>
+<script src="connectors.js"></script>
+<script>
+routeConnectors(document.getElementById('fig1'), [
+  { f: 'eq', fs: 'b', t: 't1', ts: 't', r: 'vhv', k: 'pipe' },
+]);
+</script>
+</body>
+</html>

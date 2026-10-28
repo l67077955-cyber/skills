@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page title</title>
+<style>
+/* Tokens: ivory / slate / clay. Color carries meaning; neutrals carry the rest. */
+:root {
+  --bg: #FAF9F5; --card: #fff; --ink: #141413; --body: #3D3D3A; --muted: #87867F;
+  --line: #D1CFC5; --well: #F0EEE6; --oat: #E3DACC;
+  --clay: #D97757; --olive: #788C5D; --rust: #B04A3F; --amber: #C78E3F;
+  --serif: ui-serif, Georgia, 'Times New Roman', serif;
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+  --border: 1.5px solid var(--line);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1B1B19; --card: #242422; --ink: #F3F1EA; --body: #CFCDC3; --muted: #9A988F;
+    --line: #413F3A; --well: #2C2C29; --oat: #3A352C;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1B1B19; --card: #242422; --ink: #F3F1EA; --body: #CFCDC3; --muted: #9A988F;
+  --line: #413F3A; --well: #2C2C29; --oat: #3A352C;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; padding: 48px 16px 80px; background: var(--bg); color: var(--body); font: 15px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+.page { max-width: 920px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; color: var(--ink); letter-spacing: -.01em; margin: 0; }
+h1 { font-size: 34px; line-height: 1.2; margin-bottom: 8px; }
+h2 { font-size: 24px; margin-bottom: 14px; }
+h3 { font-size: 18px; margin-bottom: 8px; }
+p { margin: 0 0 12px; }
+.sub { color: var(--muted); font-size: 14px; margin: 0 0 40px; }
+section { margin-bottom: 48px; }
+hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0 0 24px; }
+.eyebrow { font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
+code { font: 12.5px var(--mono); background: var(--well); padding: 1px 5px; border-radius: 4px; }
+
+.card { background: var(--card); border: var(--border); border-radius: 12px; padding: 22px 24px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+
+.badge { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; font-size: 12px; font-weight: 500; border-radius: 999px; background: var(--well); }
+.badge.accent  { background: rgba(217,119,87,.14); color: var(--clay); }
+.badge.success { background: rgba(120,140,93,.16); color: var(--olive); }
+.badge.warning { background: rgba(199,142,63,.16); color: #A06A2A; }
+.badge.danger  { background: rgba(176,74,63,.14);  color: var(--rust); }
+
+.btn { display: inline-flex; align-items: center; height: 36px; padding: 0 16px; font: 500 14px var(--sans); border-radius: 8px; border: 1.5px solid transparent; cursor: pointer; }
+.btn.primary { background: var(--clay); color: #fff; } .btn.primary:hover { background: #B85C3E; }
+.btn.secondary { background: var(--card); color: var(--ink); border-color: var(--line); } .btn.secondary:hover { background: var(--well); }
+input[type=range] { accent-color: var(--clay); }
+
+/* Code and diffs: dark panel on the light page */
+pre.code, .diff { background: #141413; color: #E8E6DC; font: 12.5px/1.7 var(--mono); border-radius: 12px; overflow-x: auto; margin: 0; }
+pre.code { padding: 16px 20px; }
+.diff-row { display: grid; grid-template-columns: 48px 18px 1fr; padding-right: 14px; white-space: pre; }
+.diff-row .ln { text-align: right; padding-right: 14px; color: var(--muted); user-select: none; }
+.diff-row .mark { text-align: center; color: var(--muted); }
+.diff-row.add { background: rgba(120,140,93,.18); } .diff-row.del { background: rgba(176,74,63,.18); }
+
+/* Margin note: left border carries severity */
+.note { background: var(--card); border: var(--border); border-left: 4px solid var(--line); border-radius: 8px; padding: 12px 14px 12px 16px; font-size: 13.5px; max-width: 680px; }
+.note.blocking { border-left-color: var(--clay); }
+
+details.fold { border: var(--border); border-radius: 12px; background: var(--card); margin-bottom: 14px; }
+details.fold summary { cursor: pointer; padding: 14px 20px; }
+details.fold .body { padding: 0 20px 16px; }
+
+.scroll-x { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--card); border: var(--border); font-size: 14px; }
+th { text-align: left; font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 12px 16px; background: var(--well); }
+td { padding: 12px 16px; border-top: 1px solid var(--well); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="eyebrow">context · scope · date</div>
+    <h1>Title that states the point</h1>
+    <p class="sub">What this page is and what the reader should do with it.</p>
+  </header>
+
+  <section>
+    <h2>The answer first</h2>
+    <hr class="rule">
+    <div class="card"><p>Recommendation or summary. A reader who stops here should still get it.</p></div>
+  </section>
+
+  <section>
+    <h2>Options</h2>
+    <hr class="rule">
+    <div class="grid">
+      <article class="card">
+        <div class="eyebrow">Option A</div>
+        <h3>Name</h3>
+        <p>What it is.</p>
+        <span class="badge warning">Gives up: the tradeoff</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- Interactive pages: add a Copy button, e.g.
+  <button class="btn primary" id="copy">Copy as prompt</button> -->
+</div>
+<script>
+/* Export pattern for interactive pages:
+   document.getElementById('copy').onclick = () =>
+     navigator.clipboard.writeText(JSON.stringify(state, null, 2)); */
+</script>
+</body>
+</html>

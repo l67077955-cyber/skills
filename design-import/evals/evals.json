@@ -1,0 +1,27 @@
+{
+  "skill_name": "design-import",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use the claude_design MCP (https://api.anthropic.com/v1/design/mcp, auth via /design-login) to import this project:\nhttps://claude.ai/design/p/98f7e9be-dcfd-4ab5-a3a7-1648c094ed08?file=FlashTrace+Figures.dc.html\n\nFocus on these files (the whole project is readable):\n- `FlashTrace Figures.dc.html`\n\nAlso read these files the selection imports:\n- `support.js`\n\nImplement: `FlashTrace Figures.dc.html`",
+      "expected_output": "A standalone index.html rendering both FlashTrace figures (charts, diagrams, Fig.2 connector arrows, captions) without the dc runtime, visually matching the design.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "i exported a pricing section from claude design, it's at /tmp/claude-0/-root/36304cef-6a26-4478-9fbf-c06be42e3d1e/scratchpad/design-import-workspace/fixtures/pricing/Pricing Cards.dc.html (support.js is next to it). can you turn it into one plain html file i can drop on github pages? no react / no build step pls",
+      "expected_output": "Single static HTML with the three plan cards (Most popular badge on Team, enterprise note 'Plan #2', footnote with 20%), hover lift preserved, no React/support.js.",
+      "files": [
+        "/tmp/claude-0/-root/36304cef-6a26-4478-9fbf-c06be42e3d1e/scratchpad/design-import-workspace/fixtures/pricing/Pricing Cards.dc.html"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We designed a release-notes widget in claude.ai/design: /tmp/claude-0/-root/36304cef-6a26-4478-9fbf-c06be42e3d1e/scratchpad/design-import-workspace/fixtures/tabs/Release Notes.dc.html. Please convert it into a plain HTML page for our docs site (static hosting, no React). It should behave like the design does.",
+      "expected_output": "Static HTML page whose version tabs switch content and whose 'Show older versions' toggle works (vanilla JS), visually matching the design; user told how interactivity was handled.",
+      "files": [
+        "/tmp/claude-0/-root/36304cef-6a26-4478-9fbf-c06be42e3d1e/scratchpad/design-import-workspace/fixtures/tabs/Release Notes.dc.html"
+      ]
+    }
+  ]
+}

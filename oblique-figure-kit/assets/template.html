@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Oblique figure — starter sheet</title>
+<link rel="stylesheet" href="fig.css">
+</head>
+<body>
+<!-- One .sheet per figure. Add data-out="name.png" to pin the exported file name. -->
+<div class="sheet" data-out="example.png"><svg id="f1" width="1500" height="560"></svg></div>
+
+<script src="lib.js"></script>
+<script src="oblique.js"></script>
+<script src="parts.js"></script>
+<script src="connectors.js"></script>
+<script>
+// ── bilingual text: t('中文', 'English'); ?lang=en switches the whole sheet ──
+const LANG = new URLSearchParams(location.search).get('lang') || 'zh';
+const t = (zh, en) => LANG === 'en' ? en : zh;
+document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-CN';
+
+// ── the figure ──
+(function () {
+  const F = Fig(document.getElementById('f1')), P = Parts(F);
+  const { pr, INK, T } = F, M = 60, W = 1500, Y0 = 30;
+  const G = 230;   // ground line: parts are lifted so nothing runs off the top of the sheet
+
+  const client = P.terminal([t('POST /v1/chat/completions', 'POST /v1/chat/completions')]);
+  const gate = P.plate('check', { lamp: true, vent: true });
+  const db = P.drum(36, 86, 'neutral', 2);
+
+  const parts = [
+    { E: client, n: '01', t: t('客户端', 'Client'), s: [t('业务应用或命令行', 'an app or a CLI')] },
+    { E: gate, n: '02', t: t('准入网关', 'Admission gate'), s: [t('校验 · 鉴权 · 限流', 'check · auth · limit')] },
+    { E: db, n: '03', t: t('共享存储', 'Shared store'), s: [t('PostgreSQL · Redis', 'PostgreSQL · Redis')], chip: 'cluster' }
+  ];
+
+  // lay the parts out on one row and let the kit drop the shadows
+  F.row(parts, { left: M, right: W - 120, G });
+
+  // arrows between the parts, measured from the real geometry
+  const S = F.lineStyle, FLOW = G + pr(0, Y0, 36)[1];
+  const e = F.edgeAt;
+  for (let i = 0; i < parts.length - 1; i++)
+    F.line([[e(parts[i].E, FLOW, 'r') + 5, FLOW], [e(parts[i + 1].E, FLOW, 'l') - 4, FLOW]], S.solid);
+
+  // label stack under every part (G + 52 clears the ground line)
+  parts.forEach(p => F.label(p, G + 52));
+
+  // section title + legend
+  F.head(M, 42, t('(a) 请求链路', '(a) Request path'), t('客户端 → 网关 → 存储', 'client → gate → store'));
+  F.legend(M, G + 160, [['check', t('校验', 'check')], ['neutral', t('通用', 'general')]]);
+
+  // a rejection branch off the gate's status lamp
+  const c = F.at(gate, pr(gate.lamp[0], gate.lamp[1], gate.lamp[2]));
+  F.line([[c[0], c[1] - 3], [c[0], c[1] - 30]], S.rej);
+  T(c[0], c[1] - 38, '403', 'rej');
+})();
+</script>
+</body>
+</html>

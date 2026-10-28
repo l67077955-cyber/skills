@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: personal-slash-only
+expected_outcome: |
+  The 8 personal skills under ~/.claude/skills are set to user-invocable-only in skillOverrides; no other overrides are added; env, permissions, model and other keys are unchanged; the old settings.json was backed up; the reply says it takes effect in a new session.

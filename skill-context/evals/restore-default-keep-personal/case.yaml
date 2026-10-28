@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: restore-default-keep-personal
+expected_outcome: |
+  skillOverrides ends with only the 8 personal skills as user-invocable-only; the 16 overrides on bundled and claude.ai-synced skills (dataviz, pptx, google-workspace, ...) are removed; other keys unchanged; backup made.

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<title>FlashTrace Figures</title>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#555ad0"/><rect x="30" y="56" width="9" height="14" fill="#fff"/><rect x="45.5" y="34" width="9" height="36" fill="#fff"/><rect x="61" y="46" width="9" height="24" fill="#c9cdf3"/></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e7e5df;-webkit-font-smoothing:antialiased;color:#1b2130}
+sub,sup{font-size:.7em;line-height:0}
+a{color:#3a3fae}a:hover{color:#1f2370}
+</style>
+</helmet>
+<section style="display:flex;gap:90px;align-items:flex-start;padding:90px;width:max-content">
+
+<div id="1a" style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Sans',sans-serif">
+<span style="background:#1b2130;color:#fff;font-weight:600;font-size:13px;padding:3px 9px;border-radius:4px">1a</span>
+<span style="font-size:15px;font-weight:500;color:#3a4152;white-space:nowrap">Figure 1 · Motivation (single column)</span>
+</div>
+<div style="width:760px;box-sizing:border-box;background:#fff;padding:30px 30px 26px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 12px 40px -12px rgba(30,30,50,.18);font-family:'IBM Plex Sans',sans-serif;color:#1b2130">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);column-gap:14px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+<div style="font-size:13px;font-weight:600;letter-spacing:.01em">Naive Token-by-Token Attribution</div>
+<svg width="335" height="256" style="overflow:visible;display:block">
+<sc-for list="{{ arcsL }}" as="a" hint-placeholder-count="0"><path d="{{ a.d }}" style="fill:none;stroke:#5b9bcf;stroke-width:0.85;opacity:0.55"></path></sc-for>
+<sc-for list="{{ arcsL }}" as="a" hint-placeholder-count="0"><polygon points="{{ a.h }}" style="fill:#4a8cc4;opacity:0.75"></polygon></sc-for>
+<sc-for list="{{ cubes }}" as="c" hint-placeholder-count="0"><polygon points="{{ c.lf }}" fill="{{ c.cl }}" stroke="{{ c.cs }}" style="stroke-width:0.8;stroke-linejoin:round"></polygon><polygon points="{{ c.rf }}" fill="{{ c.cr }}" stroke="{{ c.cs }}" style="stroke-width:0.8;stroke-linejoin:round"></polygon><polygon points="{{ c.top }}" fill="{{ c.ct }}" stroke="{{ c.cs }}" style="stroke-width:0.8;stroke-linejoin:round"></polygon></sc-for>
+<text x="58.7" y="211.6" transform="rotate(-23.9 58.7 211.6)" style="font:italic 10px 'IBM Plex Sans';fill:#3a4152;text-anchor:middle">Input (I)</text><text x="161.3" y="166.2" transform="rotate(-23.9 161.3 166.2)" style="font:italic 10px 'IBM Plex Sans';fill:#3a4152;text-anchor:middle">Reasoning Tokens (T)</text><text x="273.4" y="116.6" transform="rotate(-23.9 273.4 116.6)" style="font:italic 10px 'IBM Plex Sans';fill:#3a4152;text-anchor:middle">Output (O)</text>
+<text x="196" y="168" style="font:600 11px 'IBM Plex Sans';fill:#1b2130">Θ(|O|·|I+T|) Complexity</text>
+<text x="196" y="182" style="font:400 10.5px 'IBM Plex Sans';fill:#5b6275">Slow &amp; Inefficient</text>
+<sc-for list="{{ barsL }}" as="b" hint-placeholder-count="0"><rect x="{{ b.x }}" y="{{ b.y }}" width="10" height="{{ b.h }}" fill="{{ b.f }}" stroke="{{ b.s }}" style="stroke-width:0.8"></rect></sc-for>
+<line x1="192" y1="236.5" x2="333" y2="236.5" style="stroke:#1b2130;stroke-width:1"></line>
+<text x="262" y="250" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">Reasoning Tokens Absorb Importance</text>
+</svg>
+</div>
+<div style="border-left:1.5px dashed #b7bdcc"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+<div style="font-size:13px;font-weight:600;letter-spacing:.01em"><span style="font-variant:small-caps">FlashTrace</span>: Recursive &amp; Span-wise</div>
+<svg width="335" height="256" style="overflow:visible;display:block">
+<sc-for list="{{ bands }}" as="b" hint-placeholder-count="0"><path d="{{ b.d }}" style="fill:none;stroke:#e9ebfb;stroke-width:30;stroke-linecap:round"></path><path d="{{ b.d }}" style="fill:none;stroke:#c9cdf3;stroke-width:1;stroke-dasharray:2 3"></path></sc-for>
+<sc-for list="{{ cubes }}" as="c" hint-placeholder-count="0"><polygon points="{{ c.lf }}" fill="{{ c.cl }}" stroke="{{ c.cs }}" style="stroke-width:0.8;stroke-linejoin:round"></polygon><polygon points="{{ c.rf }}" fill="{{ c.cr }}" stroke="{{ c.cs }}" style="stroke-width:0.8;stroke-linejoin:round"></polygon><polygon points="{{ c.top }}" fill="{{ c.ct }}" stroke="{{ c.cs }}" style="stroke-width:0.8;stroke-linejoin:round"></polygon></sc-for>
+<sc-for list="{{ hopArcs }}" as="h" hint-placeholder-count="0"><path d="{{ h.d }}" stroke="{{ h.c }}" style="fill:none;stroke-width:7;stroke-linecap:butt"></path><path d="{{ h.d }}" style="fill:none;stroke:#ffffff;stroke-width:1.4;opacity:0.55"></path><polygon points="{{ h.h }}" fill="{{ h.c }}"></polygon></sc-for><text x="207.6" y="40" style="font:600 10px 'IBM Plex Sans';fill:#2d3186;text-anchor:middle">hop 1</text><text x="100.3" y="88.6" style="font:600 10px 'IBM Plex Sans';fill:#2d3186;text-anchor:middle">hop 2</text>
+<text x="58.7" y="211.6" transform="rotate(-23.9 58.7 211.6)" style="font:italic 10px 'IBM Plex Sans';fill:#3a4152;text-anchor:middle">Input (I)</text><text x="161.3" y="166.2" transform="rotate(-23.9 161.3 166.2)" style="font:italic 10px 'IBM Plex Sans';fill:#3a4152;text-anchor:middle">Reasoning Tokens (T)</text><text x="273.4" y="116.6" transform="rotate(-23.9 273.4 116.6)" style="font:italic 10px 'IBM Plex Sans';fill:#3a4152;text-anchor:middle">Output (O)</text>
+<text x="196" y="168" style="font:600 11px 'IBM Plex Sans';fill:#1b2130">K-hop Span-wise Attribution</text>
+<text x="196" y="182" style="font:400 10.5px 'IBM Plex Sans';fill:#5b6275">Θ(K·|I+T|)</text>
+<sc-for list="{{ barsR }}" as="b" hint-placeholder-count="0"><rect x="{{ b.x }}" y="{{ b.y }}" width="10" height="{{ b.h }}" fill="{{ b.f }}" stroke="{{ b.s }}" style="stroke-width:0.8"></rect></sc-for>
+<line x1="192" y1="236.5" x2="333" y2="236.5" style="stroke:#1b2130;stroke-width:1"></line>
+<text x="262" y="250" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">Importance Traced Back to Input</text>
+</svg>
+</div>
+</div>
+<div style="height:1px;background:#e3e6ee;margin:12px 0 14px"></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:10px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding-left:6px;white-space:nowrap"><span style="font-size:11.5px;font-weight:600">(a) Attribution share</span><span style="display:flex;gap:7px;font-size:9.5px;color:#5b6275"><span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#7b80dd"></span>input</span><span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#d7dae3"></span>reasoning</span></span></div>
+<svg width="226" height="168" style="overflow:visible;display:block">
+<sc-for list="{{ aTicks }}" as="t" hint-placeholder-count="0"><line x1="48" x2="214" y1="{{ t.y }}" y2="{{ t.y }}" style="stroke:#e3e6ee;stroke-width:1;stroke-dasharray:3 3"></line></sc-for><text x="42" y="135.5" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">0</text><text x="42" y="77.5" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">50</text><text x="42" y="19.5" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">100</text>
+<sc-for list="{{ aBars }}" as="b" hint-placeholder-count="0"><rect x="{{ b.x }}" y="16" width="40" height="{{ b.gh }}" style="fill:#d7dae3"></rect><rect x="{{ b.x }}" y="{{ b.iy }}" width="40" height="{{ b.ih }}" style="fill:#7b80dd"></rect></sc-for><text x="90" y="105" style="font:600 11px 'IBM Plex Sans';fill:#2d3186;text-anchor:middle">19%</text><text x="172" y="119" style="font:600 11px 'IBM Plex Sans';fill:#2d3186;text-anchor:middle">7%</text><text x="90" y="30" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">81%</text><text x="172" y="30" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">93%</text><text x="90" y="146" style="font:400 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">Direct</text><text x="172" y="146" style="font:400 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">CoT</text>
+<line x1="48" y1="16" x2="48" y2="132" style="stroke:#1b2130;stroke-width:1"></line>
+<line x1="48" y1="132" x2="214" y2="132" style="stroke:#1b2130;stroke-width:1"></line>
+<text x="12" y="74" transform="rotate(-90 12 74)" style="font:500 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">Attr. weight (%)</text>
+</svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="padding-left:6px"><span style="font-size:11.5px;font-weight:600">(b) Ground-truth recovery</span></div>
+<svg width="226" height="168" style="overflow:visible;display:block">
+<sc-for list="{{ bTicks }}" as="t" hint-placeholder-count="0"><line x1="48" x2="214" y1="{{ t.y }}" y2="{{ t.y }}" style="stroke:#e3e6ee;stroke-width:1;stroke-dasharray:3 3"></line></sc-for><text x="42" y="135.5" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">0</text><text x="42" y="96.8" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">10</text><text x="42" y="58.2" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">20</text><text x="42" y="19.5" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">30</text>
+<sc-for list="{{ bBars }}" as="b" hint-placeholder-count="0"><rect x="{{ b.x }}" y="{{ b.y }}" width="40" height="{{ b.h }}" fill="{{ b.f }}"></rect></sc-for><text x="90" y="26.5" style="font:600 11px 'IBM Plex Sans';fill:#2d3186;text-anchor:middle">26%</text><text x="172" y="92.2" style="font:600 11px 'IBM Plex Sans';fill:#2d3186;text-anchor:middle">9%</text><text x="90" y="146" style="font:400 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">Direct</text><text x="172" y="146" style="font:400 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">CoT</text>
+<line x1="48" y1="16" x2="48" y2="132" style="stroke:#1b2130;stroke-width:1"></line>
+<line x1="48" y1="132" x2="214" y2="132" style="stroke:#1b2130;stroke-width:1"></line>
+<text x="12" y="74" transform="rotate(-90 12 74)" style="font:500 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">Recovery rate (%)</text>
+</svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="padding-left:6px"><span style="font-size:11.5px;font-weight:600">(c) Runtime vs. context</span></div>
+<svg width="226" height="168" style="overflow:visible;display:block">
+<sc-for list="{{ cTicks }}" as="t" hint-placeholder-count="0"><line x1="48" x2="214" y1="{{ t.y }}" y2="{{ t.y }}" style="stroke:#e3e6ee;stroke-width:1;stroke-dasharray:3 3"></line></sc-for><text x="42" y="135.5" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">0</text><text x="42" y="96.8" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">100</text><text x="42" y="58.2" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">200</text><text x="42" y="19.5" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:end">300</text>
+<sc-for list="{{ cXTicks }}" as="t" hint-placeholder-count="0"><line x1="{{ t.x }}" x2="{{ t.x }}" y1="132" y2="135" style="stroke:#1b2130;stroke-width:1"></line></sc-for><text x="48" y="146" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">0</text><text x="89.5" y="146" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">2.5k</text><text x="131" y="146" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">5k</text><text x="172.5" y="146" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">7.5k</text><text x="214" y="146" style="font:400 9.5px 'IBM Plex Sans';fill:#5b6275;text-anchor:middle">10k</text>
+<sc-for list="{{ cLines }}" as="l" hint-placeholder-count="0"><path d="{{ l.d }}" stroke="{{ l.c }}" style="fill:none;stroke-width:2;stroke-linejoin:round"></path></sc-for><text x="146" y="74" style="font:600 10px 'IBM Plex Sans';fill:#4a8cc4;text-anchor:end">Baseline</text><text x="214" y="121" style="font:600 10px 'IBM Plex Sans';fill:#555ad0;text-anchor:end">FlashTrace</text>
+<sc-for list="{{ cPts }}" as="p" hint-placeholder-count="0"><circle cx="{{ p.x }}" cy="{{ p.y }}" r="2.8" stroke="{{ p.c }}" style="fill:#ffffff;stroke-width:1.5"></circle></sc-for>
+<line x1="48" y1="16" x2="48" y2="132" style="stroke:#1b2130;stroke-width:1"></line>
+<line x1="48" y1="132" x2="214" y2="132" style="stroke:#1b2130;stroke-width:1"></line>
+<text x="12" y="74" transform="rotate(-90 12 74)" style="font:500 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">Time (s)</text>
+<text x="131" y="162" style="font:500 10px 'IBM Plex Sans';fill:#1b2130;text-anchor:middle">Context length (tokens)</text>
+</svg>
+</div>
+</div>
+<sc-if value="{{ showCaptions }}" hint-placeholder-val="{{ true }}">
+<p style="margin:18px 0 0;font-family:'STIX Two Text',serif;font-size:15px;line-height:1.42;color:#1b2130;text-wrap:pretty"><i>Figure 1.</i> Motivation for <span style="font-variant:small-caps">FlashTrace</span>. <b>Top:</b> Naive token-by-token attribution requires expensive per-token computation, while <span style="font-variant:small-caps">FlashTrace</span> performs efficient span-wise recursive attribution. <b>Bottom:</b> (a) With extended reasoning, attribution weight on reasoning tokens increases significantly (from approximately 80% to over 90%); (b) This causes recovery rate of ground-truth input tokens to drop from 26% to 9%; (c) <span style="font-variant:small-caps">FlashTrace</span> runtime stays nearly flat as context length grows.</p>
+</sc-if>
+</div>
+</div>
+
+<div id="1b" style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Sans',sans-serif">
+<span style="background:#1b2130;color:#fff;font-weight:600;font-size:13px;padding:3px 9px;border-radius:4px">1b</span>
+<span style="font-size:15px;font-weight:500;color:#3a4152;white-space:nowrap">Figure 2 · Method overview (full width)</span>
+</div>
+<div style="width:1440px;box-sizing:border-box;background:#fff;padding:28px 24px 26px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 12px 40px -12px rgba(30,30,50,.18);font-family:'IBM Plex Sans',sans-serif;color:#1b2130">
+<div ref="{{ fig2Ref }}" style="position:relative;display:flex;gap:30px;align-items:flex-start">
+
+<div style="width:430px;flex:none;display:flex;flex-direction:column;gap:14px">
+<div style="text-align:center;display:flex;flex-direction:column;gap:3px;margin-bottom:4px">
+<div style="font-size:19px;font-weight:700">Token-to-Span Attribution</div>
+<div style="font-size:13.5px;color:#3a3fae">(Explain Multiple Tokens at Once)</div>
+</div>
+
+<div style="background:#f6f7fa;border:1px solid #c6cddc;border-radius:8px;padding:10px 14px 14px;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div style="font-size:13px;font-weight:600;white-space:nowrap">Proximity Calculation</div>
+<div style="display:flex;align-items:center;gap:8px">
+<svg width="44" height="24" style="display:block"><rect x="3" y="12" width="7" height="8" fill="#c9cdf3"></rect><rect x="13" y="2" width="7" height="18" fill="#555ad0"></rect><rect x="23" y="8" width="7" height="12" fill="#8d92e3"></rect><rect x="33" y="14" width="7" height="6" fill="#c9cdf3"></rect><line x1="0" y1="20.5" x2="44" y2="20.5" style="stroke:#1b2130;stroke-width:1"></line></svg>
+<span style="font-family:'STIX Two Text',serif;font-size:16px"><i>w</i><sub><i>j</i>→<b><i>S</i></b></sub></span>
+</div>
+</div>
+<div style="display:flex;justify-content:center">
+<div data-a="prox" style="background:#fff;border:1px solid #1b2130;border-radius:4px;padding:5px 12px;font-family:'STIX Two Text',serif;font-size:14.5px;white-space:nowrap">Proximity(<i>Z</i><sub><i>S</i></sub>, <i>Y</i><sub><i>S</i></sub>) = max(0, −‖<i>Y</i><sub><i>S</i></sub> − <i>Z</i><sub><i>S</i></sub>‖<sub>1</sub> + ‖<i>Y</i><sub><i>S</i></sub>‖<sub>1</sub>)</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+<div data-a="aggC" style="background:#fff;border:1px solid #1b2130;border-radius:4px;padding:6px 10px;display:flex;flex-direction:column;align-items:center;gap:2px">
+<div style="font-size:11.5px;font-weight:500;white-space:nowrap">Aggregated Contribution</div>
+<div style="font-family:'STIX Two Text',serif;font-size:15px;white-space:nowrap"><i>Z</i><sub><i>S</i></sub> = Σ<sub><i>i</i>∈<i>S</i></sub> <i>z</i><sub><i>j</i>→<i>i</i></sub></div>
+</div>
+<div data-a="aggT" style="background:#fff;border:1px solid #1b2130;border-radius:4px;padding:6px 10px;display:flex;flex-direction:column;align-items:center;gap:2px">
+<div style="font-size:11.5px;font-weight:500;white-space:nowrap">Aggregated Target</div>
+<div style="font-family:'STIX Two Text',serif;font-size:15px;white-space:nowrap"><i>Y</i><sub><i>S</i></sub> = Σ<sub><i>i</i>∈<i>S</i></sub> <i>y</i><sub><i>i</i></sub></div>
+</div>
+</div>
+</div>
+
+<div style="background:#fafbfd;border:1px solid #c6cddc;border-radius:8px;padding:10px 12px 12px;display:flex;flex-direction:column;gap:12px">
+<div style="display:grid;grid-template-columns:150px 1fr;gap:10px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:14px;font-weight:700">Layer <span style="font-family:'STIX Two Text',serif;font-style:italic;font-weight:400;font-size:16px">ℓ</span></div>
+<div style="font-size:11.5px;line-height:1.35;color:#3a4152;text-align:right">Aggregated<br>Attn. Head<br>Contribution<br><span style="font-family:'STIX Two Text',serif;font-size:14px;color:#1b2130">Σ<sub><i>h</i></sub> <i>F</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><i>h</i><span><i>i</i>→<i>S</i></span></span></span></div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-right:22px">
+<div data-a="ffn" style="width:190px;background:#fff;border:1px solid #1b2130;border-radius:5px;padding:6px 10px 8px;display:flex;flex-direction:column;align-items:center;gap:5px">
+<div style="font-size:11.5px;font-weight:500;text-align:center;line-height:1.25;white-space:nowrap">Feed-Forward Network<br>(MLP)</div>
+<div style="display:flex;align-items:center;gap:5px;background:#eef1f8;border-radius:4px;padding:5px 8px">
+<span style="font-size:12px">→</span><span style="width:12px;height:22px;background:#dfe5f6;border:1px solid #8d9fd6;border-radius:2px"></span><span style="font-size:12px">→</span><span style="font-family:'STIX Two Text',serif;font-style:italic;font-size:15px">σ</span><span style="font-size:12px">→</span><span style="width:12px;height:22px;background:#dfe5f6;border:1px solid #8d9fd6;border-radius:2px"></span><span style="font-size:12px">→</span>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;width:190px;justify-content:center">
+<div data-a="plus" style="width:20px;height:20px;border:1.5px solid #1b2130;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1;position:relative;z-index:4">+</div>
+<span style="font-size:10px;color:#5b6275;position:relative;left:62px;top:-13px;white-space:nowrap">Residual Connection</span>
+</div>
+</div>
+</div>
+
+<div style="margin-right:30px;background:#eef1f8;border:1px solid #c6cddc;border-radius:6px;padding:8px 10px 10px;display:flex;flex-direction:column;gap:12px">
+<div style="text-align:center;font-size:12.5px;font-weight:600">Attention Block <span style="font-weight:400">(Head <i style="font-family:'STIX Two Text',serif;font-size:14px">h</i>, Layer <i style="font-family:'STIX Two Text',serif;font-size:14px">ℓ</i>)</span></div>
+<div style="display:grid;grid-template-columns:96px auto;column-gap:10px;row-gap:14px;align-items:center">
+<div style="font-size:10.5px;line-height:1.25;text-align:right;color:#3a4152">Token-to-Span<br>Contribution</div>
+<div style="display:flex;align-items:center;gap:10px">
+<svg data-a="contrib" width="78" height="14" style="display:block;overflow:visible"><sc-for list="{{ contribCells }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="0.5" width="13" height="13" fill="{{ c.f }}" style="stroke:#2d3186;stroke-width:0.8"></rect></sc-for></svg>
+<span style="font-family:'STIX Two Text',serif;font-size:14px;white-space:nowrap"><i>F</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><i>h</i><span><i>i</i>→<i>S</i></span></span> = <i>v</i><sub><i>i</i></sub> · (Σ<sub><i>j</i>∈<i>S</i></sub> <i>α</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><i>h</i><i>ij</i></span>)</span>
+</div>
+<div></div>
+<div style="display:flex;align-items:center;gap:8px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+<span style="font-family:'STIX Two Text',serif;font-size:12px"><i>v</i><sub><i>i</i></sub></span>
+<svg data-a="vi" width="66" height="14" style="display:block;overflow:visible"><sc-for list="{{ viCells }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="0.5" width="13" height="13" fill="{{ c.f }}" style="stroke:#2d3186;stroke-width:0.8"></rect></sc-for></svg>
+</div>
+<span style="font-size:18px;font-weight:700;margin-top:12px">·</span>
+<span data-a="sa" style="font-family:'STIX Two Text',serif;font-size:22px;margin-top:10px;white-space:nowrap">Σ<sub style="font-size:.55em"><i>j</i>∈<i>S</i></sub> <i>α</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.55em;font-size:.6em;line-height:1.05"><i>h</i><i>ij</i></span></span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div data-a="hw" style="background:#fff;border:1px solid #9aa4bf;border-radius:5px;padding:7px 8px 8px;display:flex;flex-direction:column;align-items:center;gap:6px">
+<div style="font-size:10.5px;font-weight:500;white-space:nowrap">Head-wise Transformation <i style="font-family:'STIX Two Text',serif;font-size:12.5px;font-weight:400">v<sub>i</sub></i></div>
+<div style="font-family:'STIX Two Text',serif;font-size:13px"><i>v</i><sub><i>i</i></sub> = <i>x</i><sub><i>i</i></sub><i>W</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><i>h</i><i>V</i></span><i>W</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><i>h</i><i>O</i></span></div>
+<div style="display:flex;gap:10px;align-items:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-family:'STIX Two Text',serif;font-size:11px"><i>W</i><sub><i>V</i></sub></span><div style="padding:2px 5px;border-left:1.5px solid #1b2130;border-right:1.5px solid #1b2130;border-radius:6px"><svg width="39" height="39" style="display:block"><sc-for list="{{ wvCells }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="{{ c.y }}" width="13" height="13" fill="{{ c.f }}" style="stroke:#ffffff;stroke-width:1"></rect></sc-for></svg></div></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-family:'STIX Two Text',serif;font-size:11px"><i>W</i><sub><i>O</i></sub></span><div style="padding:2px 5px;border-left:1.5px solid #1b2130;border-right:1.5px solid #1b2130;border-radius:6px"><svg width="39" height="39" style="display:block"><sc-for list="{{ woCells }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="{{ c.y }}" width="13" height="13" fill="{{ c.f }}" style="stroke:#ffffff;stroke-width:1"></rect></sc-for></svg></div></div>
+</div>
+<div style="display:flex;align-items:center;gap:5px;margin-top:4px">
+<svg data-a="xi" width="66" height="14" style="display:block;overflow:visible"><sc-for list="{{ xiCells }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="0.5" width="13" height="13" fill="{{ c.f }}" style="stroke:#2d3186;stroke-width:0.8"></rect></sc-for></svg>
+<span style="font-family:'STIX Two Text',serif;font-size:12px"><i>x</i><sub><i>i</i></sub></span>
+</div>
+</div>
+<div data-a="am" style="background:#fff;border:1px solid #9aa4bf;border-radius:5px;padding:7px 8px 8px;display:flex;flex-direction:column;align-items:center;gap:5px">
+<div style="font-size:10.5px;font-weight:500;white-space:nowrap">Attention Matrix <i style="font-family:'STIX Two Text',serif;font-size:12.5px;font-weight:400">α<sup>h</sup><sub>ij</sub></i></div>
+<div style="display:flex;align-items:center;gap:7px">
+<span style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:9.5px;color:#3a4152">Target Span <i style="font-family:'STIX Two Text',serif">S</i></span>
+<svg width="84" height="84" style="display:block"><sc-for list="{{ attnCells }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="{{ c.y }}" width="14" height="14" fill="{{ c.f }}" style="stroke:#ffffff;stroke-width:1"></rect></sc-for><rect x="0.5" y="42.5" width="83" height="41" style="fill:none;stroke:#2d3186;stroke-width:1.2"></rect></svg>
+</div>
+<div style="font-size:9.5px;color:#3a4152;white-space:nowrap"><i style="font-family:'STIX Two Text',serif;font-size:11px">α<sub>iS</sub></i> Token to Span</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:5px;margin-top:4px">
+<div style="display:flex;align-items:center;justify-content:space-between;font-size:12.5px">
+<div style="display:flex;align-items:center;gap:5px">
+<span style="padding:3px 7px;border:1.2px solid #8d9fd6;border-radius:5px;background:#f5f7fd">I</span>
+<span style="padding:3px 7px;border:1.2px solid #8d9fd6;border-radius:5px;background:#f5f7fd">have</span>
+<span style="color:#5b6275">…</span>
+<span data-a="tok-shoes" style="padding:3px 7px;border:1.2px solid #8d9fd6;border-radius:5px;background:#f5f7fd">shoes</span>
+<span style="padding:3px 7px;border:1.2px solid #8d9fd6;border-radius:5px;background:#f5f7fd">cost</span>
+<span style="color:#5b6275">…</span>
+</div>
+<div style="display:flex;align-items:center;gap:5px">
+<span data-a="tok-add" style="padding:3px 7px;border:1.2px solid #5e9e85;border-radius:5px;background:#dcefe6;color:#173f30">add_cart</span>
+<span style="color:#5b6275">…</span>
+<span data-a="tok-shoes2" style="padding:3px 7px;border:1.2px solid #5e9e85;border-radius:5px;background:#dcefe6;color:#173f30">shoes</span>
+</div>
+</div>
+<div style="display:flex;justify-content:space-between;gap:16px">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><div style="align-self:stretch;height:5px;border:1px solid #5b6275;border-top:none;border-radius:0 0 4px 4px"></div><span style="font-size:11px;color:#3a4152;white-space:nowrap">Input Tokens</span></div>
+<div style="width:150px;display:flex;flex-direction:column;align-items:center;gap:3px"><div style="align-self:stretch;height:5px;border:1px solid #5e9e85;border-top:none;border-radius:0 0 4px 4px"></div><span style="font-size:11px;color:#3a4152;white-space:nowrap">Target Token Span <b style="font-family:'STIX Two Text',serif">S</b></span></div>
+</div>
+</div>
+</div>
+
+<div style="flex:1;min-width:0;display:grid;grid-template-columns:36px minmax(0,1fr) 290px;column-gap:16px;align-items:center">
+<div style="grid-row:1;grid-column:1 / 3;text-align:center;display:flex;flex-direction:column;gap:3px">
+<div style="font-size:19px;font-weight:700">Recursive Attribution</div>
+<div style="font-size:13.5px;color:#3a3fae">(Trace importance through intermediate tokens)</div>
+</div>
+<div style="grid-row:1;grid-column:3;text-align:center;font-size:19px;font-weight:700;align-self:start">Explanation</div>
+<div style="grid-row:2;grid-column:2;display:flex;justify-content:flex-end;gap:18px;font-size:12px;color:#3a4152;margin:10px 0 0">
+<span style="display:flex;align-items:center;gap:6px;white-space:nowrap"><span style="width:18px;height:12px;border-radius:3px;background:#dcefe6;border:1px solid #5e9e85"></span>Attribution Target</span>
+<span style="display:flex;align-items:center;gap:6px;white-space:nowrap"><span style="width:18px;height:12px;border-radius:3px;background:#555ad0;border:1px solid #33379a"></span>High-score Inputs</span>
+</div>
+
+<div style="grid-row:3;grid-column:1;justify-self:center"><div data-a="track0" style="width:6px;height:6px"></div></div>
+<div style="grid-row:3;grid-column:2;position:relative;padding:22px 0 30px">
+<div style="position:relative;width:500px;margin-left:30px;padding:36px 22px 16px 20px;transform:rotate(3deg) skewX(-13deg);background:linear-gradient(172deg,#ffffff 0%,#edf0fa 100%);border:1px solid #b6c0da;border-radius:3px;box-shadow:0 18px 26px -16px rgba(28,36,80,.35);font-family:'STIX Two Text',serif;font-size:15.5px;line-height:1.45">
+<div style="position:absolute;top:9px;right:18px;white-space:nowrap;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:14.5px">Hop 0: Direct Attribution</div>
+<div style="display:grid;grid-template-columns:68px 1fr;column-gap:8px;row-gap:2px">
+<b style="font-style:italic">[Input]</b><span>I have a $50 gift card. The shoes cost $42 and socks are $6. Add both to cart if I can afford them.</span>
+<b style="font-style:italic">[Reason]</b><span><span data-a="h0-shoes" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">Shoes</span> are $42, <span data-a="h0-socks" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">socks</span> are $6, so together that's $48. I've got $50 to spend, and $48 is under $50, so I <span data-a="h0-afford" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">can afford both</span>.</span>
+<b style="font-style:italic">[Output]</b><span><span data-a="h0-out" style="display:inline-block;padding:0 6px;border-radius:5px;background:#dcefe6;border:1px solid #5e9e85;box-shadow:0 1.5px 0 #5e9e85;color:#173f30;line-height:1.25;white-space:nowrap">Action: add_cart Items: shoes, socks</span></span>
+</div>
+</div>
+<div style="position:absolute;left:46px;bottom:-12px;display:flex;align-items:baseline;gap:8px;font-size:13px;color:#3a4152;z-index:4"><span style="font-family:'STIX Two Text',serif;font-size:16px;color:#1b2130"><b><i>w</i></b><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><span>(0)</span><b><i>T</i></b></span></span>Token Importances</div>
+</div>
+<div style="grid-row:3;grid-column:3;position:relative;background:#fff;border:1px solid #c6cddc;border-radius:6px;box-shadow:0 8px 20px -12px rgba(28,36,80,.3)">
+<div style="position:absolute;left:-7px;top:46%;width:12px;height:12px;background:#ffffff;border-left:1px solid #c6cddc;border-bottom:1px solid #c6cddc;transform:rotate(45deg)"></div>
+<div style="background:#e4e7fa;color:#2d3186;font-weight:600;font-size:14px;padding:9px 14px;border-radius:6px 6px 0 0;text-align:center">Token Attribution from Output Span</div>
+<ul style="margin:0;padding:10px 14px 12px 30px;font-size:12.5px;line-height:1.42;color:#2b3242;display:flex;flex-direction:column;gap:3px">
+<li style="text-wrap:pretty">Attribution flows from target output span to early tokens;</li>
+<li style="text-wrap:pretty">Importance concentrates on immediate reasoning tokens;</li>
+<li style="text-wrap:pretty">Underweighting source input tokens</li>
+</ul>
+</div>
+
+<div style="grid-row:4;grid-column:1;justify-self:center;align-self:start;margin-top:-6px;width:28px;height:28px;background:#fff;border:1.5px solid #7e8fcc;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'STIX Two Text',serif;font-size:18px;position:relative;z-index:4">Σ</div>
+<div style="grid-row:4;grid-column:2;position:relative;padding:22px 0 30px">
+<div style="position:relative;width:500px;margin-left:30px;padding:36px 22px 16px 20px;transform:rotate(3deg) skewX(-13deg);background:linear-gradient(172deg,#ffffff 0%,#edf0fa 100%);border:1px solid #b6c0da;border-radius:3px;box-shadow:0 18px 26px -16px rgba(28,36,80,.35);font-family:'STIX Two Text',serif;font-size:15.5px;line-height:1.45">
+<div style="position:absolute;top:9px;right:18px;white-space:nowrap;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:14.5px;display:flex;align-items:baseline;gap:6px">Hop 1: <span style="font-family:'STIX Two Text',serif;font-weight:400;font-size:16px"><i>w</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><span>(0)</span><i>T</i></span> → <i>w</i><sup>(1)</sup></span></div>
+<div style="display:grid;grid-template-columns:68px 1fr;column-gap:8px;row-gap:2px">
+<b style="font-style:italic">[Input]</b><span>I have a $50 gift card. The <span data-a="h1-in-shoes" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">shoes</span> cost $42 and <span data-a="h1-in-socks" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">socks</span> are $6. Add both to cart if I can <span data-a="h1-in-afford" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">afford</span> them.</span>
+<b style="font-style:italic">[Reason]</b><span><span data-a="h1-Shoes" style="display:inline-block;padding:0 5px;border-radius:5px;background:#dcefe6;border:1px solid #5e9e85;box-shadow:0 1.5px 0 #5e9e85;color:#173f30;line-height:1.25">Shoes</span> are $42, <span data-a="h1-socks" style="display:inline-block;padding:0 5px;border-radius:5px;background:#dcefe6;border:1px solid #5e9e85;box-shadow:0 1.5px 0 #5e9e85;color:#173f30;line-height:1.25">socks</span> are $6, so together that's $48. I've got $50 to spend, and <span data-a="h1-48" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">$48 is under $50</span>, so I <span data-a="h1-afford" style="display:inline-block;padding:0 5px;border-radius:5px;background:#dcefe6;border:1px solid #5e9e85;box-shadow:0 1.5px 0 #5e9e85;color:#173f30;line-height:1.25">can afford both</span>.</span>
+<b style="font-style:italic">[Output]</b><span>Action: add_cart Items: shoes, socks</span>
+</div>
+</div>
+</div>
+<div style="grid-row:4;grid-column:3;position:relative;background:#fff;border:1px solid #c6cddc;border-radius:6px;box-shadow:0 8px 20px -12px rgba(28,36,80,.3)">
+<div style="position:absolute;left:-7px;top:46%;width:12px;height:12px;background:#ffffff;border-left:1px solid #c6cddc;border-bottom:1px solid #c6cddc;transform:rotate(45deg)"></div>
+<div style="background:#b9bef2;color:#1f2370;font-weight:600;font-size:14px;padding:9px 14px;border-radius:6px 6px 0 0;text-align:center">Recursive Attribution from Hop 0</div>
+<ul style="margin:0;padding:10px 14px 12px 30px;font-size:12.5px;line-height:1.42;color:#2b3242;display:flex;flex-direction:column;gap:3px">
+<li style="text-wrap:pretty">Attributed Reasoning Tokens from Hop 0 form a new weighted target span;</li>
+<li style="text-wrap:pretty">Importance propagates deeper into earlier reasoning and key inputs</li>
+</ul>
+</div>
+
+<div style="grid-row:5;grid-column:1;justify-self:center;align-self:start;margin-top:-6px;width:28px;height:28px;background:#fff;border:1.5px solid #7e8fcc;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'STIX Two Text',serif;font-size:18px;position:relative;z-index:4">Σ</div>
+<div style="grid-row:5;grid-column:2;position:relative;padding:22px 0 30px">
+<div style="position:relative;width:500px;margin-left:30px;padding:36px 22px 16px 20px;transform:rotate(3deg) skewX(-13deg);background:linear-gradient(172deg,#ffffff 0%,#edf0fa 100%);border:1px solid #b6c0da;border-radius:3px;box-shadow:0 18px 26px -16px rgba(28,36,80,.35);font-family:'STIX Two Text',serif;font-size:15.5px;line-height:1.45">
+<div style="position:absolute;top:9px;right:18px;white-space:nowrap;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:14.5px;display:flex;align-items:baseline;gap:6px">Hop 2: <span style="font-family:'STIX Two Text',serif;font-weight:400;font-size:16px"><i>w</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><span>(1)</span><i>T</i></span> → <i>w</i><sup>(2)</sup></span></div>
+<div style="display:grid;grid-template-columns:68px 1fr;column-gap:8px;row-gap:2px">
+<b style="font-style:italic">[Input]</b><span>I have a $50 gift card. The shoes cost <span data-a="h2-42" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">$42</span> and socks are <span data-a="h2-6" style="display:inline-block;padding:0 5px;border-radius:5px;background:#555ad0;border:1px solid #33379a;box-shadow:0 1.5px 0 #33379a;color:#fff;line-height:1.25">$6</span>. Add both to cart if I can afford them.</span>
+<b style="font-style:italic">[Reason]</b><span>Shoes are $42, socks are $6, so together that's $48. I've got $50 to spend, and <span data-a="h2-48" style="display:inline-block;padding:0 5px;border-radius:5px;background:#dcefe6;border:1px solid #5e9e85;box-shadow:0 1.5px 0 #5e9e85;color:#173f30;line-height:1.25">$48 is under $50</span>, so I can afford both.</span>
+<b style="font-style:italic">[Output]</b><span>Action: add_cart Items: shoes, socks</span>
+</div>
+</div>
+</div>
+<div style="grid-row:5;grid-column:3;position:relative;background:#fff;border:1px solid #c6cddc;border-radius:6px;box-shadow:0 8px 20px -12px rgba(28,36,80,.3)">
+<div style="position:absolute;left:-7px;top:46%;width:12px;height:12px;background:#ffffff;border-left:1px solid #c6cddc;border-bottom:1px solid #c6cddc;transform:rotate(45deg)"></div>
+<div style="background:#555ad0;color:#ffffff;font-weight:600;font-size:14px;padding:9px 14px;border-radius:6px 6px 0 0;text-align:center">Aggregation across Hops</div>
+<ul style="margin:0;padding:10px 14px 12px 30px;font-size:12.5px;line-height:1.42;color:#2b3242;display:flex;flex-direction:column;gap:3px">
+<li style="text-wrap:pretty">Multi-hop attribution traces importances to earliest inputs;</li>
+<li style="text-wrap:pretty">Scores on input tokens from all hops are combined, revealing high importance of original input tokens</li>
+</ul>
+</div>
+
+<div style="grid-row:6;grid-column:2;padding-top:6px">
+<div data-a="final" style="display:inline-flex;align-items:center;gap:18px;background:#f6f7fa;border:1px solid #c6cddc;border-radius:8px;padding:10px 18px 8px 14px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+<svg width="210" height="58" style="display:block"><sc-for list="{{ finalBars }}" as="b" hint-placeholder-count="0"><rect x="{{ b.x }}" y="{{ b.y }}" width="11" height="{{ b.h }}" fill="{{ b.f }}" style="stroke:#2d3186;stroke-width:0.6"></rect><rect x="{{ b.x }}" y="46" width="11" height="11" style="fill:#ffffff;stroke:#7e8fcc;stroke-width:1"></rect></sc-for><line x1="0" y1="42.5" x2="210" y2="42.5" style="stroke:#1b2130;stroke-width:1"></line></svg>
+<span style="font-size:10.5px;color:#3a4152;white-space:nowrap">Input Tokens</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="font-family:'STIX Two Text',serif;font-size:16px;white-space:nowrap"><i>w</i><sub>final</sub> = <i>w</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><span>(0)</span><i>T</i></span> + Σ<sub><i>k</i></sub> <i>ρ</i> <i>w</i><span style="display:inline-flex;flex-direction:column;vertical-align:0.5em;font-size:.68em;line-height:1"><span>(<i>k</i>)</span><i>T</i></span></div>
+<div style="font-size:13px;font-weight:600;line-height:1.25">Final Aggregated<br>Input Importance</div>
+</div>
+</div>
+</div>
+</div>
+
+<sc-if value="{{ showConnectors }}" hint-placeholder-val="{{ true }}">
+<svg width="10" height="10" style="position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3">
+<sc-for list="{{ pipes }}" as="c" hint-placeholder-count="0"><path d="{{ c.d }}" style="fill:none;stroke:#94a4d8;stroke-width:5.5;stroke-linejoin:round"></path><path d="{{ c.d }}" style="fill:none;stroke:#eef1fb;stroke-width:1.6;stroke-linejoin:round"></path><polygon points="{{ c.h }}" style="fill:#7e8fcc;stroke:#7e8fcc;stroke-width:1;stroke-linejoin:round"></polygon></sc-for>
+<sc-for list="{{ thins }}" as="c" hint-placeholder-count="0"><path d="{{ c.d }}" style="fill:none;stroke:#1b2130;stroke-width:1.2;stroke-linejoin:round"></path><polygon points="{{ c.h }}" style="fill:#1b2130"></polygon></sc-for>
+<sc-for list="{{ hops }}" as="c" hint-placeholder-count="0"><path d="{{ c.d }}" style="fill:none;stroke:#ffffff;stroke-width:5.5;opacity:0.85"></path><path d="{{ c.d }}" style="fill:none;stroke:#3f4a72;stroke-width:2.6"></path><polygon points="{{ c.h }}" style="fill:#3f4a72"></polygon></sc-for>
+<sc-for list="{{ traces }}" as="c" hint-placeholder-count="0"><path d="{{ c.d }}" style="fill:none;stroke:#ffffff;stroke-width:4.5;opacity:0.85"></path><path d="{{ c.d }}" style="fill:none;stroke:#1b2130;stroke-width:1.6"></path><polygon points="{{ c.h }}" style="fill:#1b2130"></polygon></sc-for>
+</svg>
+</sc-if>
+</div>
+<sc-if value="{{ showCaptions }}" hint-placeholder-val="{{ true }}">
+<p style="margin:26px 0 0;font-family:'STIX Two Text',serif;font-size:19px;line-height:1.4;color:#1b2130;text-wrap:pretty"><i>Figure 2.</i> Overview of <span style="font-variant:small-caps">FlashTrace</span> span-wise attribution. The method pre-aggregates causal attention and residual contributions within target spans at each layer, enabling efficient multi-hop attribution through chains of intermediate reasoning.</p>
+</sc-if>
+</div>
+</div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showConnectors&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showCaptions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { pipes: [], thins: [], hops: [], traces: [] };
+  fig2Ref = React.createRef();
+  geo = this.build();
+
+  CONN = [
+    { f: 'tok-shoes', fs: 't', t: 'xi', ts: 'b', r: 'vhv', k: 'pipe' },
+    { f: 'tok-add', fs: 't', t: 'am', ts: 'b', r: 'vhv', k: 'pipe' },
+    { f: 'contrib', fs: 't', t: 'plus', ts: 'l', r: 'vh', k: 'pipe' },
+    { f: 'tok-shoes2', fs: 't', t: 'plus', ts: 'r', r: 'vh', k: 'pipe' },
+    { f: 'plus', fs: 't', t: 'ffn', ts: 'b', r: 'v', k: 'pipe' },
+    { f: 'ffn', fs: 't', t: 'aggC', ts: 'b', r: 'vhv', k: 'pipe' },
+    { f: 'tok-shoes2', fs: 'r', t: 'aggT', ts: 'r', r: 'hvh', mxo: 18, k: 'pipe' },
+    { f: 'track0', fs: 'b', t: 'final', ts: 'l', r: 'vh', k: 'pipe' },
+    { f: 'aggC', fs: 't', t: 'prox', ts: 'b', r: 'vhv', k: 'thin' },
+    { f: 'aggT', fs: 't', t: 'prox', ts: 'b', r: 'vhv', k: 'thin' },
+    { f: 'hw', fs: 't', t: 'vi', ts: 'b', r: 'vhv', k: 'thin' },
+    { f: 'am', fs: 't', t: 'sa', ts: 'b', r: 'vhv', k: 'thin' },
+    { f: 'vi', fs: 't', t: 'contrib', ts: 'b', r: 'v', k: 'thin' },
+    { f: 'h0-shoes', fs: 'b', t: 'h1-Shoes', ts: 't', k: 'hop' },
+    { f: 'h0-socks', fs: 'b', t: 'h1-socks', ts: 't', k: 'hop' },
+    { f: 'h0-afford', fs: 'b', t: 'h1-afford', ts: 't', k: 'hop' },
+    { f: 'h1-48', fs: 'b', t: 'h2-48', ts: 't', k: 'hop' },
+    { f: 'h0-out', fs: 'r', t: 'h0-afford', ts: 'b', r: 'curve', bend: 26, k: 'trace' },
+    { f: 'h1-afford', fs: 'b', t: 'h1-48', ts: 'b', r: 'curve', bend: -14, k: 'trace' },
+    { f: 'h1-afford', fs: 't', t: 'h1-in-afford', ts: 'b', r: 'curve', bend: 22, k: 'trace' },
+    { f: 'h2-48', fs: 't', ff: 0.35, t: 'h2-42', ts: 'b', r: 'curve', bend: -10, k: 'trace' },
+    { f: 'h2-48', fs: 't', ff: 0.8, t: 'h2-6', ts: 'b', r: 'curve', bend: -10, k: 'trace' },
+  ];
+  HEAD = { pipe: [12, 7.5, 10], thin: [7, 3.5, 5], hop: [11, 5.5, 0], trace: [8, 4, 0] };
+
+  componentDidMount() {
+    this.sched = () => { cancelAnimationFrame(this.raf); this.raf = requestAnimationFrame(() => this.measure()); };
+    this.ro = new ResizeObserver(this.sched);
+    if (this.fig2Ref.current) { this.obs = this.fig2Ref.current; this.ro.observe(this.obs); }
+    window.addEventListener('resize', this.sched);
+    if (document.fonts) document.fonts.ready.then(this.sched);
+    this.timers = [150, 700, 1800, 3500].map(t => setTimeout(this.sched, t));
+    this.sched();
+  }
+  componentDidUpdate() {
+    const el = this.fig2Ref.current;
+    if (el && el !== this.obs && this.ro) { this.obs = el; this.ro.observe(el); this.sched(); }
+  }
+  componentWillUnmount() {
+    this.ro && this.ro.disconnect();
+    window.removeEventListener('resize', this.sched);
+    (this.timers || []).forEach(clearTimeout);
+    cancelAnimationFrame(this.raf);
+  }
+
+  measure() {
+    const root = this.fig2Ref.current; if (!root) return;
+    const rb = root.getBoundingClientRect(); const k = rb.width / root.offsetWidth || 1;
+    const box = id => { const el = root.querySelector('[data-a="' + id + '"]'); if (!el) return null; const b = el.getBoundingClientRect(); return { x: (b.left - rb.left) / k, y: (b.top - rb.top) / k, w: b.width / k, h: b.height / k }; };
+    const pt = (b, s, f) => s === 't' ? { x: b.x + b.w * f, y: b.y } : s === 'b' ? { x: b.x + b.w * f, y: b.y + b.h } : s === 'l' ? { x: b.x, y: b.y + b.h * f } : { x: b.x + b.w, y: b.y + b.h * f };
+    const out = { pipes: [], thins: [], hops: [], traces: [] };
+    for (const c of this.CONN) {
+      const A = box(c.f), B = box(c.t); if (!A || !B) continue;
+      const p = pt(A, c.fs, c.ff ?? 0.5); let q = pt(B, c.ts, c.tf ?? 0.5);
+      const [L, W, R] = this.HEAD[c.k];
+      let pts;
+      if (c.r === 'v') pts = [p, { x: p.x, y: q.y }];
+      else if (c.r === 'vh') pts = [p, { x: p.x, y: q.y }, q];
+      else if (c.r === 'hv') pts = [p, { x: q.x, y: p.y }, q];
+      else if (c.r === 'vhv') { const my = (p.y + q.y) / 2; pts = [p, { x: p.x, y: my }, { x: q.x, y: my }, q]; }
+      else if (c.r === 'hvh') { const mx = c.mxo != null ? Math.max(p.x, q.x) + c.mxo : (p.x + q.x) / 2; pts = [p, { x: mx, y: p.y }, { x: mx, y: q.y }, q]; }
+      else if (c.r === 'curve') {
+        const mx = (p.x + q.x) / 2, my = (p.y + q.y) / 2, dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy) || 1;
+        const ctl = { x: mx - dy / d * c.bend, y: my + dx / d * c.bend };
+        const h = this.head([ctl, q], L, W);
+        out.traces.push({ d: `M${f2(p.x)},${f2(p.y)} Q${f2(ctl.x)},${f2(ctl.y)} ${f2(h.end.x)},${f2(h.end.y)}`, h: h.poly });
+        continue;
+      } else pts = [p, q];
+      pts = pts.filter((a, i) => i === 0 || Math.hypot(a.x - pts[i - 1].x, a.y - pts[i - 1].y) > 0.5);
+      if (pts.length < 2) continue;
+      const h = this.head(pts.slice(-2), L, W);
+      pts[pts.length - 1] = h.end;
+      out[c.k === 'pipe' ? 'pipes' : c.k === 'thin' ? 'thins' : 'hops'].push({ d: this.rounded(pts, R), h: h.poly });
+    }
+    function f2(n) { return n.toFixed(1); }
+    const key = JSON.stringify(out);
+    if (key !== this.lastKey) { this.lastKey = key; this.setState(out); }
+  }
+  head([p, q], L, W) {
+    const dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy) || 1, ux = dx / d, uy = dy / d;
+    const bx = q.x - ux * L, by = q.y - uy * L, nx = -uy, ny = ux;
+    return { end: { x: bx + ux * 1.5, y: by + uy * 1.5 }, poly: `${q.x.toFixed(1)},${q.y.toFixed(1)} ${(bx + nx * W).toFixed(1)},${(by + ny * W).toFixed(1)} ${(bx - nx * W).toFixed(1)},${(by - ny * W).toFixed(1)}` };
+  }
+  rounded(pts, r) {
+    const f = n => n.toFixed(1);
+    let d = `M${f(pts[0].x)},${f(pts[0].y)}`;
+    for (let i = 1; i < pts.length - 1; i++) {
+      const a = pts[i - 1], b = pts[i], c = pts[i + 1];
+      const d1 = Math.hypot(b.x - a.x, b.y - a.y), d2 = Math.hypot(c.x - b.x, c.y - b.y);
+      const rr = Math.min(r, d1 / 2, d2 / 2);
+      const p1 = { x: b.x + (a.x - b.x) / d1 * rr, y: b.y + (a.y - b.y) / d1 * rr }, p2 = { x: b.x + (c.x - b.x) / d2 * rr, y: b.y + (c.y - b.y) / d2 * rr };
+      d += ` L${f(p1.x)},${f(p1.y)} Q${f(b.x)},${f(b.y)} ${f(p2.x)},${f(p2.y)}`;
+    }
+    const l = pts[pts.length - 1];
+    return d + ` L${f(l.x)},${f(l.y)}`;
+  }
+
+  build() {
+    const f = n => (+n).toFixed(1);
+    const P = a => a.map(p => f(p[0]) + ',' + f(p[1])).join(' ');
+    const COL = { inp: ['#ffffff', '#e8eaf1', '#d0d4e1', '#596074'], rea: ['#e2e4fb', '#bcc1f1', '#9ca2e6', '#474da6'], out: ['#8f94e8', '#6066d5', '#474cba', '#2d3186'] };
+    const X0 = 30, Y0 = 198, DX = 19, DY = 8.4, S = 8.5, K = 0.866 * S;
+    const seq = []; let u = 0;
+    [['inp', 3], ['rea', 6], ['out', 4]].forEach(([g, n], gi) => { if (gi) u += 0.9; for (let i = 0; i < n; i++) { seq.push({ g, u }); u += 1; } });
+    const pos = u => ({ x: X0 + u * DX, y: Y0 - u * DY });
+    const cubesArr = seq.map(({ g, u }) => { const { x, y } = pos(u); const c = COL[g]; return { g, x, y, top: P([[x, y - S], [x + K, y - S / 2], [x, y], [x - K, y - S / 2]]), lf: P([[x - K, y - S / 2], [x, y], [x, y + S], [x - K, y + S / 2]]), rf: P([[x, y], [x + K, y - S / 2], [x + K, y + S / 2], [x, y + S]]), ct: c[0], cl: c[1], cr: c[2], cs: c[3] }; });
+    const cubes = cubesArr.slice().reverse();
+    const len = Math.hypot(DX, DY), ux = DX / len, uy = -DY / len, nx = -uy, ny = ux;
+    const ang = (Math.atan2(-DY, DX) * 180 / Math.PI).toFixed(1);
+    const span = g => { const a = seq.filter(s => s.g === g); return { u0: a[0].u, u1: a[a.length - 1].u, um: (a[0].u + a[a.length - 1].u) / 2 }; };
+    const groupLabels = [['inp', 'Input (I)'], ['rea', 'Reasoning Tokens (T)'], ['out', 'Output (O)']].map(([g, t]) => { const c = pos(span(g).um); const x = c.x + nx * 24, y = c.y + ny * 24; return { x: f(x), y: f(y), tr: `rotate(${ang} ${f(x)} ${f(y)})`, t }; });
+    const headPts = (cx, cy, x, y, L, W) => { const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy) || 1, a = dx / d, b = dy / d, bx = x - a * L, by = y - b * L; return { end: [bx + a, by + b], poly: P([[x, y], [bx - b * W, by + a * W], [bx + b * W, by - a * W]]) }; };
+    const outs = cubesArr.filter(c => c.g === 'out'), tgts = cubesArr.filter(c => c.g !== 'out');
+    const arcsL = [];
+    outs.forEach(o => tgts.forEach(t => { const x1 = o.x, y1 = o.y - S - 1, x2 = t.x, y2 = t.y - S - 2; const cx = (x1 + x2) / 2, cy = Math.min(y1, y2) - 50 - 0.32 * Math.abs(x1 - x2); const h = headPts(cx, cy, x2, y2, 4.5, 2.2); arcsL.push({ d: `M${f(x1)},${f(y1)} Q${f(cx)},${f(cy)} ${f(h.end[0])},${f(h.end[1])}`, h: h.poly }); }));
+    const bands = ['inp', 'rea', 'out'].map(g => { const s = span(g), a = pos(s.u0), b = pos(s.u1); return { d: `M${f(a.x)},${f(a.y)} L${f(b.x)},${f(b.y)}` }; });
+    const hop = (g1, g2, c, t) => { const a = pos(span(g1).um), b = pos(span(g2).um); const x1 = a.x, y1 = a.y - 21, x2 = b.x, y2 = b.y - 21; const cx = (x1 + x2) / 2, cy = Math.min(y1, y2) - 72; const h = headPts(cx, cy, x2, y2, 14, 8.5); return { d: `M${f(x1)},${f(y1)} Q${f(cx)},${f(cy)} ${f(h.end[0])},${f(h.end[1])}`, h: h.poly, c, t, lx: f(cx), ly: f((y1 + 2 * cy + y2) / 4 - 10) }; };
+    const hopArcs = [hop('out', 'rea', '#555ad0', 'hop 1'), hop('rea', 'inp', '#8d92e3', 'hop 2')];
+    const mk = (hs, fills, strokes) => hs.map((h, i) => ({ x: 196 + i * 15, y: 236 - h, h, f: fills[i], s: strokes[i] }));
+    const barsL = mk([5, 4, 6, 18, 24, 29, 21, 26, 33], [0, 1, 2].map(() => '#ffffff').concat(Array(6).fill('#9ca2e6')), Array(3).fill('#596074').concat(Array(6).fill('#474da6')));
+    const barsR = mk([30, 22, 34, 9, 6, 11, 7, 10, 6], Array(3).fill('#555ad0').concat(Array(6).fill('#e2e4fb')), Array(3).fill('#2d3186').concat(Array(6).fill('#9ca2e6')));
+    const yT = 16, yB = 132, H = yB - yT;
+    const ticks = (max, step, suf) => { const r = []; for (let v = 0; v <= max; v += step) { const y = yB - v / max * H; r.push({ y: f(y), ty: f(y + 3.5), l: v + (suf || '') }); } return r; };
+    const aBars = [['Direct', 19], ['CoT', 7]].map(([n, v], i) => { const x = 70 + i * 82, ih = v / 100 * H; return { n, x, cx: x + 20, ih: f(ih), iy: f(yB - ih), gh: f(H - ih), ly: f(yB - ih - 5), l: v + '%', r: (100 - v) + '%' }; });
+    const bBars = [['Direct', 26], ['CoT', 9]].map(([n, v], i) => { const x = 70 + i * 82, h = v / 30 * H; return { n, x, cx: x + 20, y: f(yB - h), h: f(h), ly: f(yB - h - 5), l: v + '%', f: i ? '#b3b7ee' : '#7b80dd' }; });
+    const xs = v => 48 + v / 10000 * 166, ys = v => yB - v / 300 * H;
+    const X = [100, 1000, 2000, 5000, 10000];
+    const series = [['Baseline', [2, 9, 24, 88, 268], '#4a8cc4'], ['FlashTrace', [1.5, 2.5, 3.5, 5.5, 8], '#555ad0']];
+    const cLines = series.map(([n, vs, c], si) => ({ n, c, d: 'M' + vs.map((v, i) => f(xs(X[i])) + ',' + f(ys(v))).join(' L'), lx: si ? 214 : 150, ly: si ? f(ys(8) - 8) : f(ys(150) - 2) }));
+    const cPts = []; series.forEach(([n, vs, c]) => vs.forEach((v, i) => cPts.push({ x: f(xs(X[i])), y: f(ys(v)), c })));
+    const cXTicks = [0, 2500, 5000, 7500, 10000].map(v => ({ x: f(xs(v)), l: v ? (v / 1000) + 'k' : '0' }));
+    const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+    const heat = t => { const A = [241, 242, 251], B = [58, 63, 174]; return `rgb(${lerp(A[0], B[0], t)},${lerp(A[1], B[1], t)},${lerp(A[2], B[2], t)})`; };
+    const vec = vals => vals.map((v, i) => ({ x: i * 13 + 0.5, f: heat(v) }));
+    const mat = (vals, n, s) => vals.map((v, i) => ({ x: (i % n) * s, y: Math.floor(i / n) * s, f: v < 0 ? '#f4f5f9' : heat(v) }));
+    const attn = []; const AV = [[.9], [.5, .6], [.2, .7, .4], [.1, .3, .5, .8], [.15, .2, .35, .6, .7], [.1, .25, .3, .45, .55, .95]];
+    for (let i = 0; i < 6; i++) for (let j = 0; j < 6; j++) attn.push(j <= i ? AV[i][j] : -1);
+    const FB = [6, 10, 30, 8, 14, 26, 9, 28, 7, 22, 12, 19, 5, 9];
+    const finalBars = FB.map((h, i) => ({ x: 1 + i * 15, y: 42 - h, h, f: h >= 18 ? '#555ad0' : h >= 10 ? '#8d92e3' : '#c9cdf3' }));
+    return {
+      cubes, groupLabels, arcsL, bands, hopArcs, barsL, barsR,
+      aTicks: ticks(100, 50, ''), aBars, bTicks: ticks(30, 10, ''), bBars, cTicks: ticks(300, 100, ''), cLines, cPts, cXTicks,
+      contribCells: vec([.15, .35, .9, .55, .25, .7]), viCells: vec([.6, .2, .8, .4, .3]), xiCells: vec([.3, .7, .2, .5, .85]),
+      wvCells: mat([.2, .6, .35, .8, .15, .5, .4, .7, .25], 3, 13), woCells: mat([.7, .3, .55, .2, .9, .4, .6, .35, .8], 3, 13),
+      attnCells: mat(attn, 6, 14), finalBars,
+    };
+  }
+
+  renderVals() {
+    return {
+      ...this.geo, ...this.state,
+      fig2Ref: this.fig2Ref,
+      showConnectors: this.props.showConnectors ?? true,
+      showCaptions: this.props.showCaptions ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

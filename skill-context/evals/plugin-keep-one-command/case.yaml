@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: plugin-keep-one-command
+expected_outcome: |
+  Explains that skillOverrides cannot target plugin skills and disabling the plugin removes its /commands; copies the debug skill into ~/.claude/skills under a name that does not collide with the bundled /debug; sets that copy user-invocable-only; leaves the plugin files alone and tells the user to disable engineering in /plugin themselves (or edits enabledPlugins and says so).

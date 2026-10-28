@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Broken sheet (eval input)</title>
+<link rel="stylesheet" href="fig.css">
+</head>
+<body>
+<div class="sheet" data-out="broken.png"><svg id="f1" width="1500" height="700"></svg></div>
+
+<script src="lib.js"></script>
+<script src="oblique.js"></script>
+<script>
+const LANG = new URLSearchParams(location.search).get('lang') || 'zh';
+const t = (zh, en) => LANG === 'en' ? en : zh;
+
+(function () {
+  const F = Fig(document.getElementById('f1')), { pr, INK, T } = F, M = 60, W = 1500, Y0 = 30;
+  const G = 230;
+
+  const client = (function () {
+    const E = F.element();
+    F.box(E, 0, Y0, 214, 56, 0, 120, 8, 'neutral', { steps: 8 });
+    const s = F.windowOn(E, 12, 202, Y0, 14, 108);
+    T(s.x + 10, s.y + 19, t('POST /v1/chat/completions', 'POST /v1/chat/completions'), 'scr', 'start', E.g);
+    F.screw(E, 10, Y0 + 8, 120); F.screw(E, 204, Y0 + 8, 120);
+    return E;
+  })();
+
+  const store = (function () {
+    const E = F.element();
+    F.cyl(E, 36, Y0 + 30, 36, 0, 86, 'neutral', { n: 72 });
+    return E;
+  })();
+
+  const parts = [
+    { E: client, n: '01', t: t('客户端', 'Client'), s: [t('业务应用或命令行', 'an app or a CLI')] },
+    { E: store, n: '02', t: t('共享存储（PostgreSQL 与 Redis）', 'Shared store (PostgreSQL and Redis)'), s: [t('所有状态都在这里', 'all state lives here')] }
+  ];
+
+  F.row(parts, { left: M, right: W - 120, G });
+
+  const FLOW = G + pr(0, Y0, 36)[1];
+  // BUG: the arrow endpoints are hard-coded, so it does not touch the parts
+  F.line([[320, FLOW], [640, FLOW]], F.lineStyle.solid);
+
+  // BUG: both label stacks are drawn at the same height, so the long titles collide
+  F.label(parts[0], G + 52);
+  F.label(parts[1], G + 52);
+
+  F.head(M, 42, t('(a) 请求链路', '(a) Request path'), t('客户端 → 存储', 'client → store'));
+})();
+</script>
+</body>
+</html>
